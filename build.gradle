@@ -1,0 +1,27 @@
+plugins {
+    id 'groovy'
+    id 'java-gradle-plugin'
+    id 'maven-publish'
+}
+
+group 'by.rymko'
+version '1.0-SNAPSHOT'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    testImplementation('org.spockframework:spock-core:1.3-groovy-2.5') {
+        exclude module: 'groovy-all'
+    }
+}
+
+gradlePlugin {
+    plugins{
+        fileDiff {
+            id = 'by.rymko.file-diff'
+            implementationClass = 'by.rymko.plugins.filediff.FileDiffPlugin'
+        }
+    }
+}
